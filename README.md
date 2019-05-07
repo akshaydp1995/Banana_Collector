@@ -61,7 +61,7 @@ env = UnityEnvironment(file_name= < YOUR UNITY ENV PATH HERE >)
 
 ## Algorithm
 
-![dqn](https://raw.githubusercontent.com/akshaydp1995/agent_navigation/master/assets/dqn.png)
+![dqn](https://github.com/akshaydp1995/Banana_Collector/blob/master/assets/dqn.png)
 
 **Deep Q Network** (DQN) is a reinforcement learning algorithm that approximates action-value functions by using neural networks as non-linear function approximators. DQN as achieved state-of-the-art performance on many reinforcement learning tasks, which were previously unachievable with traditional RL algorithms either due to infinite state-space or infinite action-space or both.
 
