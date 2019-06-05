@@ -1,17 +1,12 @@
 import numpy as np
 import random
 from collections import namedtuple, deque
-
-from model import QNetwork
-
-import torch
-import torch.nn.functional as F
 import torch.optim as optim
 
 BUFFER_SIZE = int(1e5)  # replay buffer size
 BATCH_SIZE = 64         # minibatch size
 GAMMA = 0.99            # discount factor
-TAU = 2e-3              # for soft update of target parameters
+TAU = 1e-3              # for soft update of target parameters
 LR = 5e-4               # learning rate 
 UPDATE_EVERY = 4        # how often to update the network
 
@@ -32,9 +27,6 @@ class Agent():
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(seed)
-        self.device = torch.device(DEVICE)
-        
-        #####self.replay_memory = REPLAY_MEMORY(BUFFER_SIZE, BATCH_SIZE, seed)
 
         # Q-Network
         self.qnetwork_local = QNetwork(state_size, action_size, seed).to(device)
@@ -45,30 +37,19 @@ class Agent():
         self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, seed)
         # Initialize time step (for updating every UPDATE_EVERY steps)
         self.t_step = 0
-        self.loss_function = torch.nn.MSELoss()
     
-    def step(self, state, action, reward, next_state, done, train=True):
-        """
-        Agent takes a step and adds the experience to replay memory.
-        If condition to learn is satisfied, then agent learns from sampled
-        experiences from the replay memory.
-        Parameters :
-            State        - current environment state.
-            Action       - action chosen by agent in current state.
-            Reward       - reward obtained from environment.
-            Next_state   - next state of environment, a result of current state-action combination.
-            Done         - whether episode is finished or not.
-            Train        - To allow agent to train or just store experiences.
-        """
+    def step(self, state, action, reward, next_state, done):
         # Save experience in replay memory
         self.memory.add(state, action, reward, next_state, done)
         
-        if train:
-            self.time_steps += 1
-            if self.time_steps % UPDATE_EVERY == 0 and len(self.replay_memory) > BATCH_SIZE:
+        # Learn every UPDATE_EVERY time steps.
+        self.t_step = (self.t_step + 1) % UPDATE_EVERY
+        if self.t_step == 0:
+            # If enough samples are available in memory, get random subset and learn
+            if len(self.memory) > BATCH_SIZE:
                 experiences = self.memory.sample()
                 self.learn(experiences, GAMMA)
-    
+
     def act(self, state, eps=0.):
         """Returns actions for given state as per current policy.
         
@@ -99,8 +80,6 @@ class Agent():
         """
         states, actions, rewards, next_states, dones = experiences
 
-        print('self.qnetwork_target(next_states)', self.qnetwork_target(next_states))
-        print('self.qnetwork_target(next_states).detach()', self.qnetwork_target(next_states).detach())
         # Get max predicted Q values (for next states) from target model
         Q_targets_next = self.qnetwork_target(next_states).detach().max(1)[0].unsqueeze(1)
         # Compute Q targets for current states 
@@ -117,7 +96,7 @@ class Agent():
         self.optimizer.step()
 
         # ------------------- update target network ------------------- #
-        self.soft_update(self.qnetwork_local, self.qnetwork_target, TAU)   
+        self.soft_update(self.qnetwork_local, self.qnetwork_target, TAU)                     
 
     def soft_update(self, local_model, target_model, tau):
         """Soft update model parameters.
@@ -131,6 +110,7 @@ class Agent():
         """
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(tau*local_param.data + (1.0-tau)*target_param.data)
+
 
 class ReplayBuffer:
     """Fixed-size buffer to store experience tuples."""
