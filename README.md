@@ -78,12 +78,12 @@ DQN doesn't require any additional knowledge about the task it's learning to per
 | LR | 5e-4 |
 | GAMMA | 0.99 |
 | BUFFER_SIZE | 1e5 |
-| BATCH_SIZE | 16 |
-| TAU | 5e-3 |
+| BATCH_SIZE | 64 |
+| TAU | 1e-3 |
 | UPDATE_EVERY | 4 |
-| SEED | 2 |
-| HIDDEN_LAYERS | [64, 128, 256] |
-| DEVICE | CPU |
+| SEED | 0 |
+| HIDDEN_LAYERS | [64, 128] |
+| DEVICE | GPU |
 
 ## Rewards Plot
 
