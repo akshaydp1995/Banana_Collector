@@ -38,7 +38,7 @@ git clone https://github.com/akshaydp1995/Navigation.git
 
     (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) to obtain the environment.
 
-3. After download, extract the **zip** file and place extracted folder in the root of **agent_navigation** repo.
+3. After download, extract the **zip** file and place extracted folder in the root of **Navigation** repo.
 
 4. Install **unityagents** package in your environment - `pip install unityagents`
 
