@@ -69,7 +69,7 @@ DQN doesn't require any additional knowledge about the task it's learning to per
 
 - This project repository uses **DQN** algorithm to solve Unity's Banana Collector environment.
 
-- The network architecture used is a simple, fully-connected neural network with 3 hidden layers of sizes, 64, 128 and 256 units. Model definition can be found in `model.py` file.
+- The network architecture used is a simple, fully-connected neural network with 3 hidden layers of sizes, 64 and 128 units. Model definition can be found in `model.py` file.
 
 - Hyperparameter values chosen are as follows :
 
