@@ -89,7 +89,7 @@ DQN doesn't require any additional knowledge about the task it's learning to per
 
 Rewards obtained by agent plotted as function of episodes of training is shown below :
 
-![rewards_plot](https://raw.githubusercontent.com/akshaydp1995/agent_navigation/master/assets/agent_1.png)
+![rewards_plot](https://raw.githubusercontent.com/akshaydp1995/agent_navigation/master/assets/rewards.png)
 
 Orange line represents a rolling mean of rewards for latest 100 episodes.
 
