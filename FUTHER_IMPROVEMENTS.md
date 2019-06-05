@@ -1,0 +1,2 @@
+- **Double DQN** or **Dueling DQN** or **Rainbow** 
+- **Prioritized Replay** sampling instead
