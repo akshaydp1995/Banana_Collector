@@ -25,7 +25,7 @@ Environment is considered as solved, when our agent gets an average score of `+1
 
 1. Clone this repository to your local machine using `git clone`.
 ```
-git clone https://github.com/akshaydp1995/agent_navigation.git
+git clone https://github.com/akshaydp1995/Navigation.git
 ```
 
 2. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
