@@ -50,9 +50,7 @@ git clone https://github.com/akshaydp1995/Navigation.git
 
 ## Instructions
 
-- To train your own agent, run all cells of notebook`[TRAIN] agent_navigation.ipynb`.
-
-- To watch demo of a trained agent, run cells in `[DEMO] agent_navigation.ipynb` notebook.
+- To train your own agent, run all cells of notebook `Navigation.ipynb`.
 
 > NOTE - Change path of `file_name` variable in both notebooks to reflect your Unity Environment files.
 ```
